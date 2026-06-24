@@ -91,9 +91,13 @@
 --tag---mobile: 0.88rem;
 --tag---desktop: 1rem;
 
---warning---light: 0.88rem;
---warning---regular: 0.88rem;
---warning---bold: 0.88rem;
+--mobile---light: 0.88rem;
+--mobile---regular: 0.88rem;
+--mobile---bold: 0.88rem;
+
+--mobile-sm---light: 0.75rem;
+--mobile-sm---regular: 0.75rem;
+--mobile-sm---bold: 0.75rem;
 
 
 
@@ -103,19 +107,82 @@
 }
 
 @theme inline {
+  /* fonte */
   --font-sans: var(--font-archivo);
 
+  /* Cores */
+  --color-background: var(--white-300);
+  --color-components: var(--white-50);
+
+  --color-text: var(--grey-700);
+  --color-text-subtle: var(--grey-300);
+
+  --color-primary: var(--green-500);
+  --color-primary-dark: var(--green-900);
+  --color-primary-light: var(--green-200);
+  --color-on-primary: var(--white-50);
+
+  --color-alert: var(--red-500);
+  --color-alert-dark: var(--red-900);
+  --color-alert-light: var(--red-200);
+
+  --color-warning: var(--yellow-500);
+  --color-warning-dark: var(--yellow-900);
+  --color-warning-light: var(--yellow-200);
+
+  /* Textos */
+  --text-h1: var(--h1---bold);
+  --text-h2: var(--h2---bold);
+  --text-h3: var(--h3---bold);
+  --text-h4: var(--h4---bold);
+  --text-h5: var(--h5---bold);
+
+  --text-large-body: var(--large-body---regular);
+  --text-regular-body: var(--regular-body---regular);
+
+  --text-tag: var(--tag---desktop);
+  --text-tag-mobile: var(--tag---mobile);
+
+  --text-mobile: var(--mobile---regular);
+  --text-mobile-sm: var(--mobile-sm---regular);
+
+  /* Espaçamentos */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+
+  /* tamanhos */
+
+    /* navbar */
+    --spacing-navbar-desktop: 90px;
+
+    /* Seções */
+    --spacing-section-dvh: calc(100dvh - var(--spacing-navbar-desktop));
+
+
+  /* gutter */
+  --spacing-gutter: 2rem;
+  --spacing-gutter-mobile: 2rem;
+  --spacing-gutter-mobile-sm: 1rem;
+
+   
+
+
+
 }
 
-@media (prefers-color-scheme: dark) {
+/* modo escuro (?) */
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    
   }
-}
+} */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: rgb(24, 24, 87); /*var(--color-background)*/
+  color: var(--color-text);
   font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
 }
