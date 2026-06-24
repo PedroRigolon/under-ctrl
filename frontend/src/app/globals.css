@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  /* Color styles */
+--green-50: #EAF2ED;
+--green-100: #BCD5C6;
+--green-200: #9CC1AA;
+--green-300: #6FA584;
+--green-400: #53946C;
+--green-500: #287947;
+--green-600: #246E41;
+--green-700: #1C5632;
+--green-800: #164327;
+--green-900: #11331E;
+
+--grey-50: #EBEBEB;
+--grey-100: #C0C0C0;
+--grey-200: #A1A1A1;
+--grey-300: #767676;
+--grey-400: #5C5C5C;
+--grey-500: #333333;
+--grey-600: #2E2E2E;
+--grey-700: #242424;
+--grey-800: #1C1C1C;
+--grey-900: #151515;
+
+--white-50: #FDFDFD;
+--white-100: #F9F9F9;
+--white-200: #F6F6F6;
+--white-300: #F2F2F2;
+--white-400: #EFEFEF;
+--white-500: #EBEBEB;
+--white-600: #D6D6D6;
+--white-700: #A7A7A7;
+--white-800: #818181;
+--white-900: #636363;
+
+--yellow-50: #FDF7E6;
+--yellow-100: #F8E7B2;
+--yellow-200: #F5DC8D;
+--yellow-300: #F1CC5A;
+--yellow-400: #EEC239;
+--yellow-500: #EAB308;
+--yellow-600: #D5A307;
+--yellow-700: #A67F06;
+--yellow-800: #816204;
+--yellow-900: #624B03;
+
+--red-50: #FDECEC;
+--red-100: #FAC5C5;
+--red-200: #F8A9A9;
+--red-300: #F48282;
+--red-400: #F26969;
+--red-500: #EF4444;
+--red-600: #D93E3E;
+--red-700: #AA3030;
+--red-800: #832525;
+--red-900: #641D1D;
+
+/* Text-size styles */
+/* base size: regular-body---regular (16px) */
+--h1---light: 5rem;
+--h1---regular: 5rem;
+--h1---bold: 5rem;
+
+--h2---light: 3.81rem;
+--h2---regular: 3.81rem;
+--h2---bold: 3.81rem;
+
+--h3---light: 2.94rem;
+--h3---regular: 2.94rem;
+--h3---bold: 2.94rem;
+
+--h4---light: 2.25rem;
+--h4---regular: 2.25rem;
+--h4---bold: 2.25rem;
+
+--h5---light: 1.69rem;
+--h5---regular: 1.69rem;
+--h5---bold: 1.69rem;
+
+--large-body---light: 1.31rem;
+--large-body---regular: 1.31rem;
+--large-body---bold: 1.31rem;
+--large-body---semi--bold: 1.31rem;
+
+--regular-body---light: 1rem;
+--regular-body---regular: 1rem;
+--regular-body---bold: 1rem;
+
+--tag---mobile: 0.88rem;
+--tag---desktop: 1rem;
+
+--warning---light: 0.88rem;
+--warning---regular: 0.88rem;
+--warning---bold: 0.88rem;
+
+
+
+  /* exemplos de paleta — ajuste/adicione conforme o design */
+  /* --primary: #4f46e5; */
+  /* --muted: #6b7280; */
+}
+
+@theme inline {
+  --font-sans: var(--font-archivo);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
+}
