@@ -126,6 +126,13 @@
   --color-alert-dark: var(--red-900);
   --color-alert-light: var(--red-200);
 
+  /* Footer (superfície escura) */
+  --color-footer: var(--grey-800);          /* #1C1C1C — fundo */
+  --color-footer-heading: var(--white-50);  /* títulos das colunas (quase branco) */
+  --color-footer-link: var(--white-700);    /* links / tagline (#A7A7A7) */
+  --color-footer-subtle: var(--white-800);  /* copyright / selos (#818181) */
+  --color-footer-divider: var(--grey-600);  /* #2E2E2E — linha divisória */
+
   --color-warning: var(--yellow-500);
   --color-warning-dark: var(--yellow-900);
   --color-warning-light: var(--yellow-200);
@@ -154,6 +161,7 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-xxl: 4rem;
+  --spacing-xxxl: 5rem;
 
   /* tamanhos */
 
