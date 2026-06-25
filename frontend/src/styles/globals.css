@@ -147,6 +147,7 @@
   --text-mobile-sm: var(--mobile-sm---regular);
 
   /* Espaçamentos */
+  --spacing-xxs: 0.25rem;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
@@ -164,7 +165,9 @@
 
 
   /* gutter */
-  --spacing-gutter: 2rem;
+  --spacing-gutter-lg: 6rem;
+  --spacing-gutter-md: 4rem;
+  --spacing-gutter-sm: 2.5rem;
   --spacing-gutter-mobile: 2rem;
   --spacing-gutter-mobile-sm: 1rem;
 
