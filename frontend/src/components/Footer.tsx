@@ -24,7 +24,7 @@ const legal = [
 export default function Footer() {
   return (
     <footer className="bg-footer mb-navbar-desktop md:mb-0">
-      <div className="px-gutter-mobile lg:max-w-[1200px] lg:mx-auto pt-xl pb-xxl md:pb-xl flex flex-col gap-xl">
+      <div className="px-gutter-mobile lg:max-w-page lg:mx-auto pt-xl pb-xxl md:pb-xl flex flex-col gap-xl">
         <div className="flex flex-col gap-xl md:flex-row md:justify-between">
           <div className="flex flex-col gap-md md:max-w-50 lg:max-w-80">
             <Brand />
@@ -49,7 +49,7 @@ export default function Footer() {
           <p>© 2026 Under CTRL · RC Studio. Todos os direitos reservados.</p>
           <div className="flex flex-col gap-xs md:flex-row md:items-center md:gap-lg">
             <span className="flex items-center gap-xs">
-              <ShieldCheck className="hidden md:block size-4" />
+              <ShieldCheck className="hidden md:block size-5 text-primary" />
               <span className="flex gap-xs">
                 Pagamento seguro <span>-</span>
                 <span>Mercado Pago</span>

@@ -18,7 +18,8 @@ export default function RootLayout({
   return (
   <>
     <Navbar />
-    {children}
+    {/* No desktop a navbar é fixed top-0 (90px); compensa pra não cobrir o conteúdo. */}
+    <div className="md:pt-navbar-desktop">{children}</div>
     <Footer />
   </>
   );

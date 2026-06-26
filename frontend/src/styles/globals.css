@@ -117,9 +117,14 @@
   --color-text: var(--grey-700);
   --color-text-subtle: var(--grey-300);
 
+  --color-grey-light: var(--grey-200);
+  --color-grey-light-2: var(--grey-100);
+  --color-grey-light-3: var(--grey-50);
+
   --color-primary: var(--green-500);
   --color-primary-dark: var(--green-900);
   --color-primary-light: var(--green-200);
+  --color-primary-subtle: var(--green-50);  /* superfície verde-pálida: pílula eyebrow, chips de ícone */
   --color-on-primary: var(--white-50);
 
   --color-alert: var(--red-500);
@@ -170,6 +175,9 @@
 
     /* Seções */
     --spacing-section-dvh: calc(100dvh - var(--spacing-navbar-desktop));
+
+    /* largura máxima do conteúdo (navbar, footer, sections) */
+    --container-page: 1240px;
 
 
   /* gutter */
