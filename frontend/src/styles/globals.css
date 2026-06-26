@@ -117,6 +117,8 @@
   --color-text: var(--grey-700);
   --color-text-subtle: var(--grey-300);
 
+  --color-border: var(--white-600);  /* #D6D6D6 — borda sutil de cards */
+
   --color-grey-light: var(--grey-200);
   --color-grey-light-2: var(--grey-100);
   --color-grey-light-3: var(--grey-50);
@@ -157,6 +159,19 @@
 
   --text-mobile: var(--mobile---regular);
   --text-mobile-sm: var(--mobile-sm---regular);
+
+  /* Altura de linha (leading) — gera leading-tight, leading-snug… */
+  --leading-tight: 1.1;     /* títulos grandes (h1–h3) */
+  --leading-snug: 1.25;     /* subtítulos / h4–h5 */
+  --leading-normal: 1.5;    /* corpo de texto */
+  --leading-relaxed: 1.65;  /* parágrafos longos */
+
+  /* Espaçamento entre textos (gap vertical em blocos de texto)
+     — gera gap-text-*, space-y-text-*, mt-text-*… */
+  --spacing-text-xs: 0.25rem;  /* eyebrow → título */
+  --spacing-text-sm: 0.5rem;   /* título → subtítulo */
+  --spacing-text-md: 1rem;     /* título → parágrafo */
+  --spacing-text-lg: 1.5rem;   /* bloco de texto → bloco de texto */
 
   /* Espaçamentos */
   --spacing-xxs: 0.25rem;
@@ -201,7 +216,7 @@
 } */
 
 body {
-  background: rgb(24, 24, 87); /*var(--color-background)*/
+  background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
 }
