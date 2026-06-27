@@ -19,9 +19,9 @@ export default function Navlink({
     return (
       <Link
         href={href}
-        className="flex flex-col items-center gap-1 font-bold text-primary max-[375px]:text-mobile-sm text-mobile text-center w-10 sm:w-20 -translate-y-7 sm:-translate-y-10 "
+        className="flex flex-col items-center  font-bold text-primary max-[375px]:text-mobile-sm text-mobile text-center w-10 sm:w-20 -translate-y-7 sm:-translate-y-10 "
       >
-        <span className="flex items-center  justify-center rounded-full bg-primary text-components border-6 border-components p-sm">
+        <span className="flex items-center  justify-center rounded-full bg-primary text-components border-6 border-components p-sm ">
           <Icon />
         </span>
         {children}

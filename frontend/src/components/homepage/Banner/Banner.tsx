@@ -13,11 +13,11 @@ const garantias: { label: string; Icon: LucideIcon }[] = [
 export default function Banner() {
   return (
     <div className="w-full bg-primary-dark text-on-primary lg:py-lg">
-      <ul className="mx-auto flex w-full max-w-page list-none flex-col gap-sm py-md max-[375px]:px-gutter-mobile-sm px-gutter-mobile sm:px-gutter-sm lg:px-gutter-mobile md:flex-row md:items-center md:justify-between md:py-sm">
+      <ul className="mx-auto flex w-full max-w-page list-none flex-col gap-md py-lg max-[375px]:px-gutter-mobile-sm px-gutter-mobile sm:px-gutter-sm lg:px-gutter-mobile md:flex-row md:items-center md:justify-between md:py-sm md:">
         {garantias.map(({ label, Icon }) => (
           <li
             key={label}
-            className="flex items-center justify-center gap-xs text-mobile md:text-regular-body"
+            className="flex items-center justify-center gap-xs md:gap-sm text-mobile md:text-mobile lg:text-regular-body"
           >
             <Icon className="size-5 shrink-0 text-primary-light" />
             {label}

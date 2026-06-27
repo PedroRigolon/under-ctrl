@@ -24,7 +24,7 @@ const baseStyles =
   "inline-flex items-center justify-center gap-xs rounded-none px-md py-xs font-bold text-regular-body transition-colors disabled:opacity-50 disabled:pointer-events-none";
 
 const variantStyles: Record<Variant, string> = {
-  primary: "bg-primary text-on-primary hover:bg-primary-dark",
+  primary: "bg-primary text-components hover:bg-primary-dark",
   secondary:
     "border border-primary text-primary bg-components hover:bg-primary-light",
   tertiary: "text-text",
