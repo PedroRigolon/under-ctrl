@@ -78,6 +78,16 @@
 
 }
 
+@layer components {
+  .layout-gutter-mobile {
+    @apply max-[375px]:px-gutter-mobile-sm px-gutter-mobile sm:px-gutter-sm;
+  }
+  
+  .layout-gutter-desktop {
+    @apply px-gutter-mobile lg:max-w-page lg:px-gutter-md xl:px-0;
+  }
+}
+
 @theme inline {
   /* fonte */
   --font-sans: var(--font-archivo);
@@ -163,15 +173,24 @@
   --spacing-xxxl: 5rem;
 
   /* tamanhos */
-
+    /* banner */
+    --spacing-banner-desktop: 100px;
+    --spacing-banner-mobile: 70px;
     /* navbar */
-    --spacing-navbar-desktop: 100px;
+    --spacing-navbar-desktop: 80px;
+    --spacing-navbar-mobile: 100px;
+    
 
     /* Seções */
-    --spacing-section-dvh: calc(100dvh - var(--spacing-navbar-desktop));
+    --spacing-section-dvh-desktop: 100dvh;
+    --spacing-section-dvh-mobile: calc(100dvh - var(--spacing-navbar-mobile));
 
     /* largura máxima do conteúdo (navbar, footer, sections) */
-    --container-page: 1220px;
+    --container-page: 1100px;
+    --container-page-navbar: 1200px;
+
+  /* Raio padrão (botões, cards, componentes) — gera rounded = 8px */
+  --radius: 0.5rem; /* 8px (override do default 0.25rem do Tailwind) */
 
   /* gutter */
   --spacing-gutter-lg: 6rem;

@@ -21,7 +21,7 @@ type ButtonAsLink = BaseProps &
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-xs rounded-none px-md py-xs font-bold text-regular-body transition-colors disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-xs rounded px-md py-xs font-bold text-regular-body transition-colors disabled:opacity-50 disabled:pointer-events-none";
 
 const variantStyles: Record<Variant, string> = {
   primary: "bg-primary text-components hover:bg-primary-dark",

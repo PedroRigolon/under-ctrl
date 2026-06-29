@@ -17,7 +17,7 @@ export default function Section({
 }: SectionProps) {
   const Tag: ElementType = as;
   return (
-    <Tag className={`w-full min-h-section-dvh ${bg} flex flex-col justify-center items-center ${className}`} {...rest}>
+    <Tag className={`w-full min-h-section-dvh-mobile md:min-h-section-dvh-desktop ${bg} flex flex-col justify-center items-center ${className}`} {...rest}>
       {children}
     </Tag>
   );
