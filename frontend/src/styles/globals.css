@@ -111,8 +111,10 @@
 
     /* Cores primarias */
     --color-primary: var(--green-500);
-    --color-primary-dark: var(--green-900);
+    --color-primary-dark: var(--green-800);
     --color-primary-light: var(--green-200);
+    --color-primary-light-2: var(--green-300);
+    --color-primary-light-3: var(--green-400);
     --color-primary-subtle: var(--green-50);  
 
     /* Cores de Alerta */

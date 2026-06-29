@@ -48,7 +48,7 @@ export default function Navbar(){
                     <Navlink href="#" Icon={Tag}>Preço</Navlink>
                     <Navlink href="#" Icon={CircleHelp}>FAQ</Navlink>
                 </ul>
-                <div>
+                <div className="flex gap-sm">
                     <Button variant="tertiary" href="/login">Entrar</Button>
                     <Button variant="primary" href="/login">Entrar</Button>
                 </div>

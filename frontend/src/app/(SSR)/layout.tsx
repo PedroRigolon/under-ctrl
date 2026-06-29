@@ -16,7 +16,7 @@ export default function RootLayout({
     <>
       <Navbar />
       {children}
-      <Footer className="mb-navbar-mobile" />
+      <Footer className="mb-navbar-mobile md:mb-0 " />
     </>
   );
 }

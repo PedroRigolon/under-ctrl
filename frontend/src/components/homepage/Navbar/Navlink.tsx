@@ -33,7 +33,7 @@ export default function Navlink({
     <li className="list-none">
       <Link
         href={href}
-        className="text-text-subtle max-[375px]:text-mobile-sm text-mobile text-center flex flex-col items-center gap-xs w-10  sm:w-20 md:w-auto md:p-2"
+        className="text-text max-[375px]:text-mobile-sm text-mobile text-center flex flex-col items-center gap-xs w-10  sm:w-20 md:w-auto md:p-2"
       >
         <span className="md:hidden">
           <Icon />
