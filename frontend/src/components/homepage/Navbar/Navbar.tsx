@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Navlink from "@/components/homepage/Navbar/Navlink"
-import { Workflow, Sparkles, UserPlus, Tag, CircleHelp } from "lucide-react"
+import { Workflow, Sparkles, UserPlus, Tag, CircleHelp, LogIn} from "lucide-react"
 import Brand from "@/components/ui/Brand"
 import Button from "@/components/ui/Button"
 
@@ -20,9 +20,9 @@ export default function Navbar(){
 
     return (
         <>
-        <header data-scrolled={scrolled} className="group flex fixed bottom-0 md:bottom-auto md:top-0 w-full h-navbar-mobile md:h-navbar-desktop justify-center items-center">
-            <nav className="md:hidden w-full h-full flex justify-between items-center max-[375px]:px-gutter-mobile-sm px-gutter-mobile sm:px-gutter-sm sm:py-4 border-t-2 border-grey-light-3  ">
-                <Navlink href="#" Icon={Workflow}>Como funciona</Navlink>
+        <header data-scrolled={scrolled} className="group flex fixed z-50 bottom-0 md:bottom-auto md:top-0 w-full h-navbar-mobile md:h-navbar-desktop justify-center items-center">
+            <nav className="bg-components md:hidden w-full h-full flex justify-between items-center max-[375px]:px-gutter-mobile-sm px-gutter-mobile sm:px-gutter-sm sm:py-4 border-t-2 border-grey-light-3  ">
+                <Navlink href="#" Icon={Workflow}>Solução</Navlink>
                 <Navlink href="#" Icon={Sparkles}>Recursos</Navlink>
                 <Navlink href="#" Icon={UserPlus} isMain>Criar conta</Navlink>
                 <Navlink href="#" Icon={Tag}>Preço</Navlink>
@@ -43,14 +43,14 @@ export default function Navbar(){
                 <ul className="flex gap-2 transition-all duration-300
                                opacity-0 -translate-y-1 pointer-events-none
                                group-data-[scrolled=true]:opacity-100 group-data-[scrolled=true]:translate-y-0 group-data-[scrolled=true]:pointer-events-auto">
-                    <Navlink href="#" Icon={Workflow}>Como funciona</Navlink>
+                    <Navlink href="#" Icon={Workflow}>Solução</Navlink>
                     <Navlink href="#" Icon={Sparkles}>Recursos</Navlink>
                     <Navlink href="#" Icon={Tag}>Preço</Navlink>
                     <Navlink href="#" Icon={CircleHelp}>FAQ</Navlink>
                 </ul>
                 <div className="flex gap-sm">
-                    <Button variant="tertiary" href="/login">Entrar</Button>
-                    <Button variant="primary" href="/login">Entrar</Button>
+                    <Button variant="tertiary"  href="/login">Entrar</Button>
+                    <Button variant="primary" Icon={UserPlus} href="/login">Entrar</Button>
                 </div>
             </nav>
         </header>
