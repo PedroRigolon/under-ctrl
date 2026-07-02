@@ -111,6 +111,19 @@ export default function Phone() {
   const [step, setStep] = useState(-1); // -1 = limpa; -2 = saindo; senão = quantos entraram
   const [reduced, setReduced] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [now, setNow] = useState<Date | null>(null); // null no SSR → evita mismatch
+
+  // relógio real: só no cliente (via useEffect), atualizando a cada 10s.
+  // o 1º update vai num callback (não no corpo do effect) p/ evitar render em cascata.
+  useEffect(() => {
+    const tick = () => setNow(new Date());
+    const first = setTimeout(tick, 0);
+    const id = setInterval(tick, 10_000);
+    return () => {
+      clearTimeout(first);
+      clearInterval(id);
+    };
+  }, []);
 
   // respeita "reduzir movimento" do sistema
   useEffect(() => {
@@ -161,6 +174,20 @@ export default function Phone() {
     return () => window.clearTimeout(id);
   }, [step, round, visible]);
 
+  // Rótulos formatados em pt-BR. Enquanto `now` é null (SSR + 1ª hidratação),
+  // mostra o placeholder — assim servidor e cliente batem (sem hydration mismatch).
+  const rawDate = now?.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+  const dateLabel = rawDate
+    ? rawDate.charAt(0).toUpperCase() + rawDate.slice(1) // "Terça-feira, 30 de abril"
+    : "Terça-feira, 30 de Abril";
+  const timeLabel =
+    now?.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) ??
+    "23:12";
+
   return (
     <>
       {/* MOLDURA (corpo do celular) — o padding É o bezel.
@@ -168,11 +195,11 @@ export default function Phone() {
           Tablet/desktop: volta ao normal (aspect-ratio + moldura completa). */}
       <div
         ref={rootRef}
-        className="relative mx-auto w-full max-w-70
+        className="relative   w-full max-w-70 md:max-w-63 lg:max-w-75
                 bg-[linear-gradient(145deg,var(--grey-500),var(--grey-800)_45%,var(--grey-900))]
                 shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),inset_0_-2px_6px_rgba(0,0,0,0.55),0_30px_45px_-15px_rgba(0,0,0,0.7)]
                 h-120 rounded-t-[42px] rounded-b-none px-3 pt-3 pb-0
-                md:h-auto md:aspect-[9/12] md:rounded-[42px] md:p-3"
+                md:h-auto md:aspect-[7/12] md:rounded-[42px] md:p-3"
       >
         {/* TELA — preenche sozinha, raio = 42px − 12px(p-3) ≈ 30px */}
         <div
@@ -207,19 +234,17 @@ export default function Phone() {
                     bg-[radial-gradient(115%_75%_at_50%_-10%,rgba(255,255,255,0.30),rgba(255,255,255,0.08)_35%,transparent_65%)]"
           />
 
-          {/* Textos de data e hora da tela (precisam ser ajustados para pegar os valores exatos do dia em que o usuario estiver no site) */}
+          {/* Textos de data e hora da tela) */}
           <div className="absolute left-1/2 top-12 z-9 -translate-x-1/2 w-full flex flex-col justify-center items-center">
-            <p className="text-components/80! font-light">
-              terça-feira, 30 de Abril
-            </p>
-            <h3 className="text-components!">23:12</h3>
+            <p className="text-components/80! font-light">{dateLabel}</p>
+            <h3 className="text-components!">{timeLabel}</h3>
           </div>
 
           {/* pilha de notificações (lock screen) — posições dirigidas por `step`.
               Cada card é absoluto e cresce do topo (abaixo do relógio) para baixo.
               Margem lateral vem do `inset-x-3` daqui; o corte do excesso fica com o
               overflow-hidden da tela (não aqui, senão cortaria a entrada no topo). */}
-          <ul className="absolute inset-x-3 top-[32%] bottom-0 z-10">
+          <ul className="absolute inset-x-3 top-[32%] md:top-[35%] bottom-0 z-10">
             {ROUNDS[round].map((n, i) => {
               const slot = step - i; // 0 = mais novo (topo); cresce para baixo
               const inWindow = slot >= 0 && slot < VISIBLE;
