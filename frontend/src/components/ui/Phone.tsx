@@ -195,11 +195,11 @@ export default function Phone() {
           Tablet/desktop: volta ao normal (aspect-ratio + moldura completa). */}
       <div
         ref={rootRef}
-        className="relative   w-full max-w-70 md:max-w-63 lg:max-w-75
+        className="relative w-full max-w-70 md:max-w-63 lg:max-w-68
                 bg-[linear-gradient(145deg,var(--grey-500),var(--grey-800)_45%,var(--grey-900))]
                 shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),inset_0_-2px_6px_rgba(0,0,0,0.55),0_30px_45px_-15px_rgba(0,0,0,0.7)]
-                h-120 rounded-t-[42px] rounded-b-none px-3 pt-3 pb-0
-                md:h-auto md:aspect-[7/12] md:rounded-[42px] md:p-3"
+                h-112 rounded-t-[42px] rounded-b-none px-3 pt-3 pb-0
+                md:h-117 lg:h-120 md:aspect-[7/12] md:rounded-[42px] md:p-3"
       >
         {/* TELA — preenche sozinha, raio = 42px − 12px(p-3) ≈ 30px */}
         <div
@@ -235,7 +235,7 @@ export default function Phone() {
           />
 
           {/* Textos de data e hora da tela) */}
-          <div className="absolute left-1/2 top-12 z-9 -translate-x-1/2 w-full flex flex-col justify-center items-center">
+          <div className="absolute left-1/2 top-11 z-9 -translate-x-1/2 w-full flex flex-col justify-center items-center">
             <p className="text-components/80! font-light">{dateLabel}</p>
             <h3 className="text-components!">{timeLabel}</h3>
           </div>
@@ -244,7 +244,7 @@ export default function Phone() {
               Cada card é absoluto e cresce do topo (abaixo do relógio) para baixo.
               Margem lateral vem do `inset-x-3` daqui; o corte do excesso fica com o
               overflow-hidden da tela (não aqui, senão cortaria a entrada no topo). */}
-          <ul className="absolute inset-x-3 top-[32%] md:top-[35%] bottom-0 z-10">
+          <ul className="absolute inset-x-3 top-[29%] bottom-0 z-10">
             {ROUNDS[round].map((n, i) => {
               const slot = step - i; // 0 = mais novo (topo); cresce para baixo
               const inWindow = slot >= 0 && slot < VISIBLE;

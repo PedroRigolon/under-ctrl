@@ -5,6 +5,10 @@ import Title from "@/components/ui/Texts/Title";
 import Text from "@/components/ui/Texts/Text";
 
 export default function Hero() {
+  const line:string =`box-decoration-clone bg-no-repeat px-[0.04em]
+    bg-[linear-gradient(rgb(47_158_68/0.34),rgb(47_158_68/0.34))]
+    bg-[length:100%_42%] bg-[position:0_88%]`;
+
   return (
     <>
       <Section as="main">
@@ -15,11 +19,14 @@ export default function Hero() {
             {/* titulo e texto */}
             <div className="flex flex-col gap-md">
               <Title>
-                Nenhuma cobrança vai te {" "}
-                <span className="text-primary">
-                  pegar de surpr
-                  <span className="underline decoration-primary-light decoration-[6px] underline-offset-7">
-                    esa
+                <span className={line}>
+                  Nenhuma
+                </span>{" "}
+                cobrança vai te{" "}
+                <span>
+                  pegar de{" "}
+                  <span className={line}>
+                    surpresa
                   </span>
                 </span>
                 .

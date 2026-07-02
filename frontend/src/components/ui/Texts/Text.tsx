@@ -8,7 +8,7 @@ interface TextProps {
 export default function Text({ children, className}:TextProps) {
   return (
     
-      <p className={`lg:text-h6! ${className}`}>
+      <p className={`font-light lg:text-h6! ${className}`}>
         {children}
       </p>
     
