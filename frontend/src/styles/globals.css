@@ -185,13 +185,17 @@
     --spacing-navbar-desktop: 80px;
     --spacing-navbar-mobile: 90px;
     
+    --spacing-banner-desktop: 135px;
+    --spacing-banner-mobile: 100px;
+    
+    
 
     /* Seções */
     --spacing-section-dvh-desktop: 100dvh;
     --spacing-section-dvh-mobile: calc(100dvh - var(--spacing-navbar-mobile));
 
     /* largura máxima do conteúdo (navbar, footer, sections) */
-    --container-page: 1100px;
+    --container-page: 1060px;
     --container-page-navbar: 1200px;
 
   /* Raio padrão (botões, cards, componentes) — gera rounded = 8px */

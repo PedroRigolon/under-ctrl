@@ -30,11 +30,11 @@ export default function Navbar(){
             </nav>
 
             <nav className="hidden md:flex w-full justify-between items-center px-gutter-mobile lg:px-gutter-sm xl:px-0 py-4 transition-all duration-300 lg:max-w-page-navbar
-            
+            border border-transparent
             group-data-[scrolled=true]:md:mx-gutter-sm group-data-[scrolled=true]:lg:mx-gutter-md
-            group-data-[scrolled=true]:lg:max-w-page group-data-[scrolled=true]:bg-components/70 
-            group-data-[scrolled=true]:backdrop-blur-lg group-data-[scrolled=true]:border 
-            group-data-[scrolled=true]:border-border group-data-[scrolled=true]:rounded 
+            group-data-[scrolled=true]:lg:max-w-page group-data-[scrolled=true]:bg-components/70
+            group-data-[scrolled=true]:backdrop-blur-lg
+            group-data-[scrolled=true]:border-border group-data-[scrolled=true]:rounded
             group-data-[scrolled=true]:shadow-xs group-data-[scrolled=true]:px-gutter-mobile-sm 
             group-data-[scrolled=true]:translate-y-2" >
                 <Brand text/>

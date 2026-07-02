@@ -8,7 +8,7 @@ interface TitleProps {
 export default function Title({ children, className}:TitleProps) {
   return (
     
-      <h5 className={`md:text-h4! lg:text-h3! xl:text-h2! ${className}`}>
+      <h5 className={`max-[420px]:text-h5! text-h4! md:text-h3! xl:text-h2! ${className}`}>
         {children}
       </h5>
     

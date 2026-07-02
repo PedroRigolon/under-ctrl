@@ -7,7 +7,7 @@ import Text from "@/components/ui/Texts/Text";
 export default function Hero() {
   const line:string =`box-decoration-clone bg-no-repeat px-[0.04em]
     bg-[linear-gradient(rgb(47_158_68/0.34),rgb(47_158_68/0.34))]
-    bg-[length:100%_42%] bg-[position:0_88%]`;
+    bg-[length:100%_25%] bg-[position:0_88%]`;
 
   return (
     <>
@@ -15,7 +15,7 @@ export default function Hero() {
         {/* grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-xl md:gap-0 pt-xl md:pt-0 w-full max-w-page layout-gutter-mobile layout-gutter-desktop">
           {/* col 1 - text*/}
-          <div className="flex flex-col w-full gap-lg h-full">
+          <div className="flex flex-col w-full gap-lg lg:gap-xl h-full">
             {/* titulo e texto */}
             <div className="flex flex-col gap-md">
               <Title>
@@ -38,11 +38,11 @@ export default function Hero() {
             </div>
 
             {/* botoes */}
-            <div className="flex flex-col lg:flex-row gap-md px-[3px]">
-              <Button variant="primary" href="/login">
+            <div className="flex flex-col lg:flex-row gap-lg px-[3px]">
+              <Button variant="primary" size="lg" href="/login">
                 Criar conta grátis
               </Button>
-              <Button variant="secondary" href="/login">
+              <Button variant="secondary" size="lg" href="/login">
                 Como funciona?
               </Button>
             </div>
@@ -51,7 +51,7 @@ export default function Hero() {
           </div>
 
           {/* col 2 - phone*/}
-          <div className="flex flex-col justify-center items-center md:items-end lg:pr-lg w-full h-full">
+          <div className="flex flex-col justify-center items-center md:items-end w-full h-full">
             <Phone />
           </div>
         </div>

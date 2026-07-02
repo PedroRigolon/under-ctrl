@@ -1,13 +1,9 @@
-interface FooterProps{
-    className?: string,
-}
 
-export default function Footer({className = ""}){
+
+export default function Footer({}){
     return (
         <>
-        <footer className={` ${className}`}>
-
-        </footer>
+        
         </>
 
     );

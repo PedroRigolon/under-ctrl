@@ -1,70 +1,101 @@
 "use client";
 
 import { Wifi, Signal, BatteryFull } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import Logo from "../../../public/logo.svg";
 
 // interface PhoneProps{
 
 // }
 
-/* Badge à direita do card: um serviço único (letra + cor da marca)
-   ou um resumo de grupo (pilha de círculos coloridos). */
+/* Logos reais das marcas, servidas de /public/logos. `bg` é o fundo do tile
+   (estilo ícone de app); `fit: "cover"` é para artes que já trazem o próprio
+   fundo e preenchem o quadrado inteiro. */
+type Service = { name: string; logo: string; bg: string; fit?: "cover" };
+
+const SERVICES: Record<
+  | "netflix"
+  | "spotify"
+  | "hbomax"
+  | "amazon"
+  | "icloud"
+  | "googleone"
+  | "youtube"
+  | "disney"
+  | "xbox",
+  Service
+> = {
+  netflix: { name: "Netflix", logo: "/logos/netflix-seeklogo.png", bg: "#000000" },
+  amazon: { name: "Amazon Prime", logo: "/logos/amazon-prime-seeklogo.png", bg: "#FFFFFF" },
+  spotify: { name: "Spotify", logo: "/logos/spotify-2015-seeklogo.png", bg: "#191414" },
+  hbomax: { name: "HBO Max", logo: "/logos/hbo-max-seeklogo.png", bg: "#FFFFFF" },
+  icloud: { name: "iCloud+", logo: "/logos/apple-icloud-seeklogo.png", bg: "#FFFFFF" },
+  googleone: { name: "Google One", logo: "/logos/google-one-seeklogo.png", bg: "#FFFFFF" },
+  youtube: { name: "YouTube Premium", logo: "/logos/youtube-icon-seeklogo.png", bg: "#FFFFFF" },
+  disney: { name: "Disney+", logo: "/logos/disney-seeklogo.png", bg: "#0E1B4D", fit: "cover" },
+  xbox: { name: "Xbox Game Pass", logo: "/logos/xbox-game-pass-seeklogo.png", bg: "#FFFFFF" },
+};
+
+type ServiceId = keyof typeof SERVICES;
+
+/* Badge à direita do card: um serviço único (logo real) ou um resumo de
+   grupo (pilha de logos circulares). */
 type Badge =
-  | { kind: "single"; letter: string; color: string }
-  | { kind: "group"; colors: string[] };
+  | { kind: "single"; service: ServiceId }
+  | { kind: "group"; services: ServiceId[] };
 
 type Notif = { body: string; time: string; badge: Badge };
 
 /* Alertas de renovação da lock screen. A pilha cresce do topo (abaixo do
    relógio) para baixo — o mais novo fica no topo. Cada rodada é um conjunto de
    cards; o loop cicla as rodadas para variar o conteúdo. Dentro da rodada, a
-   ordem vai do mais antigo (entra 1º) ao mais novo (entra por último → topo).
-   As cores das marcas são valores ilustrativos (não são tokens do design system). */
+   ordem vai do mais antigo (entra 1º) ao mais novo (entra por último → topo). */
 const ROUNDS: Notif[][] = [
   [
     {
       body: "Netflix renova em 2 dias · R$ 55,90",
       time: "há 1 h",
-      badge: { kind: "single", letter: "N", color: "#E50914" },
+      badge: { kind: "single", service: "netflix" },
     },
     {
       body: "Spotify renova amanhã · R$ 21,90",
       time: "há 20 min",
-      badge: { kind: "single", letter: "S", color: "#1DB954" },
+      badge: { kind: "single", service: "spotify" },
     },
     {
       body: "HBO Max renova em 4 dias · R$ 34,90",
       time: "há 5 min",
-      badge: { kind: "single", letter: "H", color: "#7E22CE" },
+      badge: { kind: "single", service: "hbomax" },
     },
     {
       body: "3 renovam em 7 dias · R$ 91,80",
       time: "agora",
-      badge: { kind: "group", colors: ["#E50914", "#1DB954", "#3692E8"] },
+      badge: { kind: "group", services: ["netflix", "spotify", "hbomax"] },
     },
   ],
   [
     {
       body: "Amazon Prime renova em 5 dias · R$ 19,90",
       time: "há 1 h",
-      badge: { kind: "single", letter: "a", color: "#00A8E1" },
+      badge: { kind: "single", service: "amazon" },
     },
     {
       body: "iCloud+ renova hoje · R$ 14,90",
       time: "há 25 min",
-      badge: { kind: "single", letter: "i", color: "#3692E8" },
+      badge: { kind: "single", service: "icloud" },
     },
     {
       body: "Google One renova em 6 dias · R$ 8,90",
       time: "há 5 min",
-      badge: { kind: "single", letter: "G", color: "#4285F4" },
+      badge: { kind: "single", service: "googleone" },
     },
     {
       body: "5 renovam em 12 dias · R$ 213,40",
       time: "agora",
       badge: {
         kind: "group",
-        colors: ["#E50914", "#1DB954", "#3692E8", "#00A8E1", "#FF0000"],
+        services: ["netflix", "spotify", "icloud", "amazon", "youtube"],
       },
     },
   ],
@@ -72,24 +103,24 @@ const ROUNDS: Notif[][] = [
     {
       body: "YouTube Premium renova em 3 dias · R$ 24,90",
       time: "há 1 h",
-      badge: { kind: "single", letter: "Y", color: "#FF0000" },
+      badge: { kind: "single", service: "youtube" },
     },
     {
       body: "Disney+ renova em 9 dias · R$ 33,90",
       time: "há 20 min",
-      badge: { kind: "single", letter: "D", color: "#113CCF" },
+      badge: { kind: "single", service: "disney" },
     },
     {
       body: "Xbox Game Pass renova em 8 dias · R$ 44,90",
       time: "há 5 min",
-      badge: { kind: "single", letter: "X", color: "#107C10" },
+      badge: { kind: "single", service: "xbox" },
     },
     {
       body: "4 renovam este mês · R$ 132,60",
       time: "agora",
       badge: {
         kind: "group",
-        colors: ["#E50914", "#1DB954", "#3692E8", "#00A8E1"],
+        services: ["netflix", "spotify", "icloud", "amazon"],
       },
     },
   ],
@@ -104,6 +135,57 @@ const CLEAR_DELAY = 900; // tela limpa → 1º card (também o delay inicial)
 const STEP_INTERVAL = 1800; // intervalo entre cada card entrar (tempo de tela)
 const FULL_HOLD = 3200; // pausa com a rodada cheia antes de todos saírem
 const EXIT_DURATION = 750; // saída assenta antes de trocar de rodada
+
+/* Tile quadrado com a logo real do serviço (estilo ícone de app). */
+function ServiceTile({ id }: { id: ServiceId }) {
+  const s = SERVICES[id];
+  return (
+    <div
+      className="grid size-7 shrink-0 place-items-center overflow-hidden rounded-lg ring-1 ring-black/10"
+      style={{ backgroundColor: s.bg }}
+    >
+      <Image
+        src={s.logo}
+        alt={s.name}
+        width={56}
+        height={56}
+        className={
+          s.fit === "cover" ? "size-full object-cover" : "size-5 object-contain"
+        }
+      />
+    </div>
+  );
+}
+
+/* Pilha de logos circulares sobrepostas p/ notificações agrupadas. */
+function ServiceStack({ ids }: { ids: ServiceId[] }) {
+  return (
+    <div className="flex shrink-0 items-center">
+      {ids.map((id, i) => {
+        const s = SERVICES[id];
+        return (
+          <span
+            key={id}
+            className="grid size-3.5 place-items-center overflow-hidden rounded-full ring-2 ring-components"
+            style={{ backgroundColor: s.bg, marginLeft: i ? "-0.4rem" : 0 }}
+          >
+            <Image
+              src={s.logo}
+              alt={s.name}
+              width={28}
+              height={28}
+              className={
+                s.fit === "cover"
+                  ? "size-full object-cover"
+                  : "size-2.5 object-contain"
+              }
+            />
+          </span>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function Phone() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -183,25 +265,23 @@ export default function Phone() {
   });
   const dateLabel = rawDate
     ? rawDate.charAt(0).toUpperCase() + rawDate.slice(1) // "Terça-feira, 30 de abril"
-    : "Terça-feira, 30 de Abril";
+    : "";
   const timeLabel =
     now?.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) ??
-    "23:12";
+    "";
 
   return (
     <>
-      {/* MOLDURA (corpo do celular) — o padding É o bezel.
-          Mobile: altura fixa, sem borda/raio embaixo (parece "cortado" pela metade).
-          Tablet/desktop: volta ao normal (aspect-ratio + moldura completa). */}
+      {/* MOLDURA (corpo do celular). */}
       <div
         ref={rootRef}
         className="relative w-full max-w-70 md:max-w-63 lg:max-w-68
                 bg-[linear-gradient(145deg,var(--grey-500),var(--grey-800)_45%,var(--grey-900))]
-                shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),inset_0_-2px_6px_rgba(0,0,0,0.55),0_30px_45px_-15px_rgba(0,0,0,0.7)]
+                md:shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),inset_0_-2px_6px_rgba(0,0,0,0.55),0_30px_45px_-15px_rgba(0,0,0,0.7)]
                 h-112 rounded-t-[42px] rounded-b-none px-3 pt-3 pb-0
                 md:h-117 lg:h-120 md:aspect-[7/12] md:rounded-[42px] md:p-3"
       >
-        {/* TELA — preenche sozinha, raio = 42px − 12px(p-3) ≈ 30px */}
+        {/* TELA — preenche sozinha*/}
         <div
           className="relative flex h-full w-full flex-col overflow-hidden
                   rounded-t-[30px] rounded-b-none md:rounded-[30px]
@@ -267,14 +347,12 @@ export default function Phone() {
                   }}
                 >
                   <div className="flex w-full items-center gap-2">
-                    {/* logo do app (uc) */}
-                    <div className="grid size-8 shrink-0 place-items-center rounded-[10px]
-                                bg-[linear-gradient(160deg,var(--green-700),var(--green-900))]
-                                shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]">
-                      <span className="text-mobile-sm! font-bold leading-none text-components!">
-                        uc
-                      </span>
-                    </div>
+                    {/* logo do app */}
+                    <Image
+                      src={Logo}
+                      alt="Logo do Under CTRL"
+                      className="w-7 h-auto shrink-0"
+                    />
 
                     {/* texto: título + horário, e o body abaixo */}
                     <div className="min-w-0 flex-1">
@@ -291,26 +369,11 @@ export default function Phone() {
                       </p>
                     </div>
 
-                    {/* badge à direita: serviço único ou grupo */}
+                    {/* badge à direita: logo do serviço ou pilha do grupo */}
                     {n.badge.kind === "group" ? (
-                      <div className="flex shrink-0 items-center">
-                        {n.badge.colors.map((c, ci) => (
-                          <span
-                            key={c}
-                            className="size-3.5 rounded-full ring-2 ring-components"
-                            style={{ backgroundColor: c, marginLeft: ci ? "-0.4rem" : 0 }}
-                          />
-                        ))}
-                      </div>
+                      <ServiceStack ids={n.badge.services} />
                     ) : (
-                      <div
-                        className="grid size-7 shrink-0 place-items-center rounded-lg"
-                        style={{ backgroundColor: n.badge.color }}
-                      >
-                        <span className="text-mobile-sm! font-bold leading-none text-components!">
-                          {n.badge.letter}
-                        </span>
-                      </div>
+                      <ServiceTile id={n.badge.service} />
                     )}
                   </div>
                 </li>
