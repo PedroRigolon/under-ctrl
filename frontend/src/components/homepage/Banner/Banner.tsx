@@ -1,45 +1,32 @@
-import { Landmark, ImageOff, BellRing, ShieldCheck } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import Text from "@/components/ui/Texts/Text";
+import { BellRing, Send, ShieldCheck, Wallet } from "lucide-react";
 
-const garantias: { label: string; Icon: LucideIcon }[] = [
-  { label: "Sem conectar banco", Icon: Landmark },
-  { label: "Imagens nunca salvas", Icon: ImageOff },
-  { label: "Alertas e-mail e Telegram", Icon: BellRing },
-  { label: "Conforme à LGPD", Icon: ShieldCheck },
+const bannerItems = [
+  { Icon: BellRing, label: "Alertas 7, 3 e 1 dia antes" },
+  { Icon: Send, label: "Avisos por e-mail e Telegram" },
+  { Icon: ShieldCheck, label: "Seus dados nunca são salvos" },
+  { Icon: Wallet, label: "Pague uma vez, use pra sempre" },
 ];
+
 
 // Faixa verde full-bleed logo abaixo do hero. Empilha no mobile e vira uma linha
 // distribuída a partir de `md:`. Usa o mesmo ritmo de container/gutters das demais barras.
 export default function Banner() {
   return (
     <>
-    {/* <div className="w-full bg-primary-dark text-on-primary lg:py-lg">
-      <ul className="mx-auto flex w-full max-w-page list-none flex-col gap-md py-lg max-[375px]:px-gutter-mobile-sm px-gutter-mobile sm:px-gutter-sm lg:px-gutter-mobile md:flex-row md:items-center md:justify-between md:py-sm md:">
-        {garantias.map(({ label, Icon }) => (
-          <li
-            key={label}
-            className="flex items-center justify-center gap-xs md:gap-sm text-mobile md:text-mobile lg:text-regular-body"
-          >
-            <Icon className="size-5 shrink-0 text-primary-light" />
-            {label}
-          </li>
-        ))}
-      </ul>
-    </div> */}
-
-    <div className="w-full min-h-banner-mobile md:min-h-banner-desktop flex flex-col justify-center items-center layout-gutter-mobile layout-gutter-desktop bg-primary">
-      <ul className="w-full grid grid-cols-2">
-        {garantias.map(({ label, Icon }) => (
-          <li
-            key={label}
-            className="flex items-center justify-center gap-xs md:gap-sm text-mobile md:text-mobile lg:text-regular-body"
-          >
-            <Icon className="size-5 shrink-0 text-primary-light" />
-            {label}
-          </li>
-        ))}
-      </ul>
-    </div>
-    </> 
+    {/* banner */}
+          <div className="flex justify-center items-center w-full bg-primary-dark min-h-banner-mobile md:min-h-banner-desktop py-md md:py-0">
+            <div className="grid grid-cols-2 md:grid-cols-4 w-full items-center gap-sm max-w-page layout-gutter-mobile layout-gutter-desktop">
+              {bannerItems.map(({ Icon, label }) => (
+                <div key={label} className="flex justify-center items-center gap-xs ">
+                  <Icon className="size-5 shrink-0 text-primary-light" aria-hidden />
+                  <Text className="lg:text-regular-body! text-components!">
+                    {label}
+                  </Text>
+                </div>
+              ))}
+            </div>
+          </div>
+    </>
   );
 }

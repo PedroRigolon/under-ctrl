@@ -18,7 +18,7 @@ export default function Hero() {
           <div className="flex flex-col w-full gap-lg lg:gap-xl h-full">
             {/* titulo e texto */}
             <div className="flex flex-col gap-md">
-              <Title>
+              <Title h2 align="left">
                 <span className={line}>
                   Nenhuma
                 </span>{" "}
@@ -31,7 +31,7 @@ export default function Hero() {
                 </span>
                 .
               </Title>
-              <Text>
+              <Text align="left">
                 O Under CTRL vigia suas assinaturas e te avisa por e-mail ou
                 Telegram antes de cada renovação. Você decide o que continua.
               </Text>
@@ -42,7 +42,7 @@ export default function Hero() {
               <Button variant="primary" size="lg" href="/login">
                 Criar conta grátis
               </Button>
-              <Button variant="secondary" size="lg" href="/login">
+              <Button variant="secondary" size="lg" href="#como-funciona">
                 Como funciona?
               </Button>
             </div>

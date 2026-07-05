@@ -115,12 +115,14 @@
     --color-primary-light: var(--green-200);
     --color-primary-light-2: var(--green-300);
     --color-primary-light-3: var(--green-400);
-    --color-primary-subtle: var(--green-50);  
+    --color-primary-subtle: var(--green-50);
+    --color-primary-darker: var(--green-900);
 
     /* Cores de Alerta */
     --color-alert: var(--red-500);
     --color-alert-dark: var(--red-900);
     --color-alert-light: var(--red-200);
+    --color-alert-subtle: var(--red-50);
 
     /* Cores de Aviso */
     --color-warning: var(--yellow-500);
@@ -194,6 +196,10 @@
     --spacing-section-dvh-desktop: 100dvh;
     --spacing-section-dvh-mobile: calc(100dvh - var(--spacing-navbar-mobile));
 
+    /* py das seções (respiro vertical interno, responsivo) */
+    --spacing-section-mobile: 4rem;
+    --spacing-section-desktop: 6rem;
+
     /* largura máxima do conteúdo (navbar, footer, sections) */
     --container-page: 1060px;
     --container-page-navbar: 1200px;
@@ -215,6 +221,17 @@
 }
 
 
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* navbar é top bar só no desktop — compensa a âncora ficar atrás dela */
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: var(--spacing-navbar-desktop);
+  }
+}
 
 body {
   background: var(--color-background);
