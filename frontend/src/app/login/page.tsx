@@ -83,13 +83,14 @@ export default function Login() {
             <Text align="left">Descubra suas {'"esquecidas"'} — sem conectar banco.</Text>
           </div>
 
-          <button
+          <a
             type="button"
+            href="/painel"
             className="flex justify-center items-center gap-xs bg-components border border-border rounded py-xs font-semibold transition-shadow hover:shadow-sm"
           >
             <GoogleIcon />
             Continuar com Google
-          </button>
+          </a>
 
           <div className="flex items-center gap-sm">
             <span className="flex-1 border-t border-border" />
