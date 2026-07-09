@@ -1,19 +1,22 @@
 import Image from "next/image";
-import Logo from "../../../public/logo_CTRL.svg";
+import Logo_text from "../../../public/logo+text.svg";
+import Logo from "../../../public/logo.svg";
 
-export default function Brand() {
+interface BrandProps{
+  text?:boolean,
+  className?:string,
+}
+
+export default function Brand({text = false, className = "w-32"}:BrandProps) {
   return (
-    <div className="flex justify-start items-center gap-xs">
+    <div className="flex justify-start items-center">
       <Image
-        src={Logo}
+        src={text ? Logo_text : Logo}
         width={32}
         height={32}
-        className="w-12 h-auto"
+        className={`h-auto ${className}`}
         alt="Logo do Under CTRL"
       />
-      <span className="text-regular-body text-primary">
-        Under <span className="text-regular-body font-bold text-green-800">CTRL</span>
-      </span>
     </div>
   );
 }

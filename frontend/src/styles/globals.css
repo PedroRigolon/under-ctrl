@@ -57,53 +57,35 @@
 --red-800: #832525;
 --red-900: #641D1D;
 
+
 /* Text-size styles */
 /* base size: regular-body---regular (16px) */
---h1---light: 5rem;
---h1---regular: 5rem;
---h1---bold: 5rem;
+--h1: 5rem;
+--h2: 3.6rem;
+--h3: 2.94rem;
+--h4: 2.25rem;
+--h5: 2rem;
+--h6: 1.31rem;
 
---h2---light: 3.81rem;
---h2---regular: 3.81rem;
---h2---bold: 3.81rem;
+--regular-body: 1rem; /* Tamanho base (16px) */
 
---h3---light: 2.94rem;
---h3---regular: 2.94rem;
---h3---bold: 2.94rem;
+--tag-mobile: 0.88rem;
+--tag-desktop: 1rem;
 
---h4---light: 2.25rem;
---h4---regular: 2.25rem;
---h4---bold: 2.25rem;
-
---h5---light: 1.69rem;
---h5---regular: 1.69rem;
---h5---bold: 1.69rem;
-
---large-body---light: 1.31rem;
---large-body---regular: 1.31rem;
---large-body---bold: 1.31rem;
---large-body---semi--bold: 1.31rem;
-
---regular-body---light: 1rem;
---regular-body---regular: 1rem;
---regular-body---bold: 1rem;
-
---tag---mobile: 0.88rem;
---tag---desktop: 1rem;
-
---mobile---light: 0.88rem;
---mobile---regular: 0.88rem;
---mobile---bold: 0.88rem;
-
---mobile-sm---light: 0.75rem;
---mobile-sm---regular: 0.75rem;
---mobile-sm---bold: 0.75rem;
+--mobile: 0.88rem; 
+--mobile-sm: 0.75rem; 
 
 
+}
 
-  /* exemplos de paleta — ajuste/adicione conforme o design */
-  /* --primary: #4f46e5; */
-  /* --muted: #6b7280; */
+@layer components {
+  .layout-gutter-mobile {
+    @apply max-[375px]:px-gutter-mobile-sm px-gutter-mobile sm:px-gutter-sm;
+  }
+  
+  .layout-gutter-desktop {
+    @apply  lg:max-w-page lg:px-gutter-md xl:px-0;
+  }
 }
 
 @theme inline {
@@ -111,47 +93,81 @@
   --font-sans: var(--font-archivo);
 
   /* Cores */
-  --color-background: var(--white-300);
-  --color-components: var(--white-50);
+    
+    /* fundo */
+    --color-background: var(--white-300);
+    --color-components: var(--white-50);
+    --color-border: var(--white-600);  
 
-  --color-text: var(--grey-700);
-  --color-text-subtle: var(--grey-300);
+    /* Textos */
+    --color-text: var(--grey-700);
+    --color-text-subtle: var(--grey-300);
 
-  --color-primary: var(--green-500);
-  --color-primary-dark: var(--green-900);
-  --color-primary-light: var(--green-200);
-  --color-on-primary: var(--white-50);
 
-  --color-alert: var(--red-500);
-  --color-alert-dark: var(--red-900);
-  --color-alert-light: var(--red-200);
+    /* cinza claro */
+    --color-grey-light: var(--grey-200);
+    --color-grey-light-2: var(--grey-100);
+    --color-grey-light-3: var(--grey-50);
 
-  /* Footer (superfície escura) */
-  --color-footer: var(--grey-800);          /* #1C1C1C — fundo */
-  --color-footer-heading: var(--white-50);  /* títulos das colunas (quase branco) */
-  --color-footer-link: var(--white-700);    /* links / tagline (#A7A7A7) */
-  --color-footer-subtle: var(--white-800);  /* copyright / selos (#818181) */
-  --color-footer-divider: var(--grey-600);  /* #2E2E2E — linha divisória */
+    /* Cores primarias */
+    --color-primary: var(--green-500);
+    --color-primary-dark: var(--green-800);
+    --color-primary-light: var(--green-200);
+    --color-primary-light-2: var(--green-300);
+    --color-primary-light-3: var(--green-400);
+    --color-primary-subtle: var(--green-50);
+    --color-primary-darker: var(--green-900);
 
-  --color-warning: var(--yellow-500);
-  --color-warning-dark: var(--yellow-900);
-  --color-warning-light: var(--yellow-200);
+    /* Cores de Alerta */
+    --color-alert: var(--red-500);
+    --color-alert-dark: var(--red-900);
+    --color-alert-light: var(--red-200);
+    --color-alert-subtle: var(--red-50);
+
+    /* Cores de Aviso */
+    --color-warning: var(--yellow-500);
+    --color-warning-dark: var(--yellow-900);
+    --color-warning-light: var(--yellow-200);
+
+    /* Cores footer */
+    --color-footer: var(--grey-800);          /* #1C1C1C — fundo */
+    --color-footer-heading: var(--white-50);  /* títulos das colunas (quase branco) */
+    --color-footer-link: var(--white-700);    /* links / tagline (#A7A7A7) */
+    --color-footer-subtle: var(--white-800);  /* copyright / selos (#818181) */
+    --color-footer-divider: var(--grey-600);  /* #2E2E2E — linha divisória */
+
 
   /* Textos */
-  --text-h1: var(--h1---bold);
-  --text-h2: var(--h2---bold);
-  --text-h3: var(--h3---bold);
-  --text-h4: var(--h4---bold);
-  --text-h5: var(--h5---bold);
+  --text-h1: var(--h1);
+  --text-h2: var(--h2);
+  --text-h3: var(--h3);
+  --text-h4: var(--h4);
+  --text-h5: var(--h5);
+  --text-h6: var(--h6);
 
-  --text-large-body: var(--large-body---regular);
-  --text-regular-body: var(--regular-body---regular);
+  --text-regular-body: var(--regular-body);
 
-  --text-tag: var(--tag---desktop);
-  --text-tag-mobile: var(--tag---mobile);
+  --text-tag-desktop: var(--tag-desktop);
+  --text-tag-mobile: var(--tag-mobile);
 
-  --text-mobile: var(--mobile---regular);
-  --text-mobile-sm: var(--mobile-sm---regular);
+  --text-mobile: var(--mobile);
+  --text-mobile-sm: var(--mobile-sm);
+
+  /* Altura de linha (leading) — gera leading-tight, leading-snug… */
+  --leading-tight: 1.1;     /* títulos grandes (h1–h3) */
+  --leading-snug: 1.25;     /* subtítulos / h4–h5 */
+  --leading-normal: 1.5;    /* corpo de texto */
+  --leading-relaxed: 1.65;  /* parágrafos longos */
+
+  /* Espaçamento entre textos (gap vertical em blocos de texto)
+     — gera gap-text-*, space-y-text-*, mt-text-*… */
+  --spacing-text-xs: 0.25rem;  /* eyebrow → título */
+  --spacing-text-sm: 0.5rem;   /* título → subtítulo */
+  --spacing-text-md: 1rem;     /* título → parágrafo */
+  --spacing-text-lg: 1.5rem;   /* bloco de texto → bloco de texto */
+  
+  --line-height-titles: 0.95;
+
 
   /* Espaçamentos */
   --spacing-xxs: 0.25rem;
@@ -164,13 +180,32 @@
   --spacing-xxxl: 5rem;
 
   /* tamanhos */
-
+    /* banner */
+    --spacing-banner-desktop: 100px;
+    --spacing-banner-mobile: 70px;
     /* navbar */
-    --spacing-navbar-desktop: 90px;
+    --spacing-navbar-desktop: 80px;
+    --spacing-navbar-mobile: 90px;
+    
+    --spacing-banner-desktop: 135px;
+    --spacing-banner-mobile: 100px;
+    
+    
 
     /* Seções */
-    --spacing-section-dvh: calc(100dvh - var(--spacing-navbar-desktop));
+    --spacing-section-dvh-desktop: 100dvh;
+    --spacing-section-dvh-mobile: calc(100dvh - var(--spacing-navbar-mobile));
 
+    /* py das seções (respiro vertical interno, responsivo) */
+    --spacing-section-mobile: 4rem;
+    --spacing-section-desktop: 6rem;
+
+    /* largura máxima do conteúdo (navbar, footer, sections) */
+    --container-page: 1060px;
+    --container-page-navbar: 1200px;
+
+  /* Raio padrão (botões, cards, componentes) — gera rounded = 8px */
+  --radius: 0.5rem; /* 8px (override do default 0.25rem do Tailwind) */
 
   /* gutter */
   --spacing-gutter-lg: 6rem;
@@ -185,15 +220,71 @@
 
 }
 
-/* modo escuro (?) */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* navbar é top bar só no desktop — compensa a âncora ficar atrás dela */
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: var(--spacing-navbar-desktop);
   }
-} */
+}
 
 body {
-  background: rgb(24, 24, 87); /*var(--color-background)*/
+  background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
 }
+
+/* Headings typically need tighter leading for readability */
+h1, h2, h3, h4, h5 {
+  line-height: var(--line-height-titles);
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold)
+}
+
+h1{font-size: var(--text-h1);}
+h2{font-size: var(--text-h2);}
+h3{font-size: var(--text-h3);}
+h4{font-size: var(--text-h4);}
+h5{font-size: var(--text-h5);}
+
+
+h6,p{
+  color: var(--color-text-subtle);
+  line-height: 1.30;
+}
+
+h6{
+  font-size: var(--h6);
+}
+
+p{
+  font-size: var(--text-regular-body);
+}
+
+
+/* Pilha de notificações do <Phone /> (lock screen).
+   A posição/opacidade de cada card vem do JS (dirigido pelo contador `step`);
+   aqui só definimos a transição — anima só transform + opacity (GPU, sem reflow). */
+.notif-card {
+  will-change: transform, opacity;
+  transition:
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reduzir movimento: desliza gentil (sem escala), sem "pular" — nunca desliga. */
+@media (prefers-reduced-motion: reduce) {
+  .notif-card {
+    transition:
+      transform 0.55s ease,
+      opacity 0.45s ease;
+  }
+}
+
+
+

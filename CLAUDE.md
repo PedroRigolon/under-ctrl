@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository layout
 
-Monorepo for **Under CTRL**, a freemium SaaS for managing recurring subscriptions (full product spec, PT/EN, in `readme.md`).
+Monorepo for **Under CTRL**, a freemium SaaS for managing recurring subscriptions (full product spec, PT/EN, in `docs/spec.md`; `README.md`/`README-en.md` are the image-heavy GitHub front pages).
 
 - `frontend/` — Next.js 16 App Router app. The only active codebase today; run all commands from here.
 - `backend/` — Planned Node.js + Express REST API. **Not started** (placeholder file only). Per the spec it will use MongoDB, Groq (Llama Vision) for receipt OCR, Google OAuth 2.0 + Magic Link auth, and Mercado Pago.
@@ -47,7 +47,7 @@ Components:
 
 Components style themselves **only with the generated semantic utilities** — e.g. `bg-components`, `text-primary`, `px-gutter-mobile`, `gap-xs`, `min-h-navbar-desktop`. To add or change styling, extend the tokens in `globals.css` rather than hardcoding colors/sizes or reaching for raw Tailwind palette classes. (Border widths are not part of the spacing scale — use `border-[6px]`, not `border-6`.) Layout is mobile-first: the navbar is a bottom bar on mobile and a top bar from `md:` up.
 
-## Product constraints worth knowing (from `readme.md`)
+## Product constraints worth knowing (from `docs/spec.md`)
 
 - **LGPD / privacy**: receipt images are processed in RAM only and never persisted; the AI only pre-fills forms — every final decision is the user's (human-in-the-loop).
 - A daily cron fires renewal alerts at 7 days / 3 days / 24h, via email and/or Telegram, grouped per window.
